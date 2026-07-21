@@ -1,0 +1,114 @@
+/* ============================================================
+   SPM Financial Pivot Report — Summary Cards
+   Horizon Design System — KPI cards with token-based styling
+   ============================================================ */
+
+.summary-cards {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.summary-card {
+  flex: 1;
+  min-width: 180px;
+  display: flex;
+  border-radius: var(--spm-radius-container, 4px);
+  overflow: hidden;
+  background: rgb(var(--now-color_surface--neutral-1, 252, 252, 252));
+  border: 1px solid rgb(var(--now-container--border-color, 207, 213, 215));
+  box-shadow: var(--spm-shadow-sm, 0 1px 2px rgba(0, 0, 0, 0.04));
+  transition: transform var(--spm-transition-fast, 150ms ease),
+              box-shadow var(--spm-transition-fast, 150ms ease),
+              border-color var(--spm-transition-fast, 150ms ease);
+  cursor: default;
+}
+
+.summary-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--spm-shadow-lg, 0 4px 16px rgba(0, 0, 0, 0.08));
+  border-color: rgb(var(--now-color_surface--neutral-5, 209, 214, 217));
+}
+
+/* Colored accent bar on the left */
+.summary-card__accent {
+  width: 4px;
+  flex-shrink: 0;
+  border-radius: 0;
+}
+
+.summary-card__content {
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.summary-card__label {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgb(var(--now-color_text--tertiary, 55, 68, 74));
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+/* Container for multiple category rows */
+.summary-card__values {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Each row: value + category badge */
+.summary-card__row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.summary-card__value {
+  font-size: 22px;
+  font-weight: 800;
+  font-family: var(--spm-font-heading, 'Cabin', Arial, sans-serif);
+  color: rgb(var(--now-color_text--primary, 16, 23, 26));
+  letter-spacing: -0.5px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+
+/* Category badge — small label indicating which breakdown */
+.summary-card__category-badge {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  width: fit-content;
+}
+
+.summary-card__category-badge--total {
+  color: rgb(var(--now-color_text--tertiary, 55, 68, 74));
+  background: rgb(var(--now-color_surface--neutral-3, 230, 233, 234));
+}
+
+.summary-card__category-badge--opex {
+  color: rgb(var(--now-color_grouped--blue-3, 52, 110, 199));
+  background: rgba(var(--now-color_grouped--blue-1, 137, 183, 254), 0.2);
+}
+
+.summary-card__category-badge--capex {
+  color: rgb(var(--now-color_grouped--green-3, 63, 145, 77));
+  background: rgba(var(--now-color_grouped--green-1, 200, 240, 210), 0.2);
+}
+
+/* --- Forecast conditional coloring (compared to Budget) --- */
+.summary-card__value.forecast-over-budget {
+  color: rgb(var(--now-actionable--primary-negative--background-color, 228, 35, 56));
+}
+
+.summary-card__value.forecast-under-budget {
+  color: rgb(var(--now-color_alert--high-2, 196, 115, 0));
+}

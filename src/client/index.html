@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SPM Financial Pivot Report</title>
+  <sdk:now-ux-globals />
+  <script>
+    // Array.from polyfill for older browsers
+    if (!Array.from) {
+      Array.from = (function () {
+        var toStr = Object.prototype.toString;
+        var isCallable = function (fn) {
+          return typeof fn === 'function' || toStr.call(fn) === '[object Function]';
+        };
+        return function (arrayLike) {
+          var T = Object(arrayLike);
+          var len = T.length >>> 0;
+          var A = new Array(len);
+          var k = 0;
+          var mapFn = arguments.length > 1 ? arguments[1] : void 0;
+          while (k < len) {
+            var kValue = T[k];
+            A[k] = mapFn ? mapFn(kValue, k) : kValue;
+            k++;
+          }
+          A.length = len;
+          return A;
+        };
+      })();
+    }
+  </script>
+</head>
+<body>
+  <div id="spm-financial-root"></div>
+  <script src="main.tsx?uxpcb=$[UxFrameworkScriptables.getFlushTimestamp()]" type="module"></script>
+</body>
+</html>

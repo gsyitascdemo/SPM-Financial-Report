@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "rootDir": "./",
+    "outDir": "../../dist/server",
+    "module": "es2022",
+    "target": "es2022",
+    "moduleResolution": "bundler",
+    "allowJs": true,
+    "declaration": false,
+    "sourceMap": false,
+    "skipLibCheck": true,
+    "noUnusedLocals": false,
+    "checkJs": true,
+    "paths": {
+      "@servicenow/glide/x_snc_spm_financia": ["./types/x_snc_spm_financia.d.ts"]
+    }
+  },
+  "include": [
+    "./**/*.ts",
+    "./**/*.js"
+  ],
+  "exclude": [
+    "**/*.now.ts"
+  ]
+}

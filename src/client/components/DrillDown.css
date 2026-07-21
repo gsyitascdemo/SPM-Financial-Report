@@ -1,0 +1,139 @@
+/* ============================================================
+   SPM Financial Pivot Report — Drill-Down Panel
+   Horizon Design System — Expanded detail view
+   ============================================================ */
+
+.drilldown {
+  padding: 20px 28px;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  background: rgb(var(--now-color_surface--neutral-2, 241, 243, 243));
+  border-top: 1px solid rgb(var(--now-color_surface--neutral-4, 220, 224, 226));
+  animation: expandIn 250ms ease;
+}
+
+@keyframes expandIn {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 500px;
+  }
+}
+
+.drilldown-loading {
+  padding: 20px 28px;
+  color: rgb(var(--now-color_text--tertiary, 55, 68, 74));
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.drilldown-error {
+  padding: 20px 28px;
+  color: rgb(var(--now-actionable--primary-negative--background-color, 228, 35, 56));
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.drilldown-section {
+  flex: 1;
+  min-width: 300px;
+  background: rgb(var(--now-color_surface--neutral-1, 252, 252, 252));
+  border-radius: var(--spm-radius-container, 4px);
+  padding: 16px;
+  border: 1px solid rgb(var(--now-container--border-color, 207, 213, 215));
+  box-shadow: var(--spm-shadow-sm, 0 1px 2px rgba(0, 0, 0, 0.04));
+  transition: box-shadow var(--spm-transition-normal, 200ms ease),
+              border-color var(--spm-transition-normal, 200ms ease);
+}
+
+.drilldown-section:hover {
+  box-shadow: var(--spm-shadow-md, 0 2px 8px rgba(0, 0, 0, 0.06));
+  border-color: rgb(var(--now-color_surface--neutral-5, 209, 214, 217));
+}
+
+.drilldown-title {
+  margin: 0 0 12px 0;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: var(--spm-font-heading, 'Cabin', Arial, sans-serif);
+  color: rgb(var(--now-color_text--tertiary, 55, 68, 74));
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid rgb(var(--now-actionable--primary--background-color, 0, 128, 163));
+}
+
+.drilldown-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 12px;
+}
+
+.drilldown-table th {
+  text-align: left;
+  padding: 8px 12px;
+  font-weight: 700;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: rgb(var(--now-color_text--tertiary, 55, 68, 74));
+  background: rgb(var(--now-color_surface--neutral-3, 230, 233, 234));
+  border-bottom: 1px solid rgb(var(--now-color_surface--neutral-4, 220, 224, 226));
+}
+
+.drilldown-table th:first-child {
+  border-radius: var(--spm-radius-container, 4px) 0 0 0;
+}
+
+.drilldown-table th:last-child {
+  border-radius: 0 var(--spm-radius-container, 4px) 0 0;
+}
+
+.drilldown-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid rgb(var(--now-color_surface--neutral-3, 230, 233, 234));
+  color: rgb(var(--now-color_text--primary, 16, 23, 26));
+  font-variant-numeric: tabular-nums;
+  transition: background-color var(--spm-transition-fast, 150ms ease);
+}
+
+.drilldown-table tr:nth-child(even) td {
+  background: rgb(var(--now-color_surface--neutral-2, 241, 243, 243));
+}
+
+.drilldown-table tr:hover td {
+  background: rgba(0, 128, 163, 0.04);
+}
+
+.drilldown-table tr:last-child td {
+  border-bottom: none;
+}
+
+.drilldown-table tr:last-child td:first-child {
+  border-radius: 0 0 0 var(--spm-radius-container, 4px);
+}
+
+.drilldown-table tr:last-child td:last-child {
+  border-radius: 0 0 var(--spm-radius-container, 4px) 0;
+}
+
+.drilldown-empty {
+  margin: 8px 0;
+  font-size: 13px;
+  color: rgb(var(--now-color_text--tertiary, 55, 68, 74));
+  font-style: italic;
+  text-align: center;
+  padding: 16px;
+}

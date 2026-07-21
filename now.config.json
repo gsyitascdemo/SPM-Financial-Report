@@ -1,0 +1,6 @@
+{
+  "scope": "x_snc_spm_financia",
+  "scopeId": "64a5ae7f93d10f94e538fd731103d658",
+  "name": "SPM Financial Report",
+  "tsconfigPath": "./src/server/tsconfig.json"
+}

@@ -1,0 +1,258 @@
+/* ============================================================
+   SPM Financial Pivot Report — App Shell Styles
+   ServiceNow Horizon Design System — Best Practices Applied
+   ============================================================ */
+
+/* --- Design Token Aliases (local shorthand) --- */
+:root {
+  --spm-font-body: 'Lato', 'Source Sans Pro', Arial, sans-serif;
+  --spm-font-heading: 'Cabin', 'Source Sans Pro', Arial, sans-serif;
+  --spm-radius-container: 4px;
+  --spm-radius-actionable: 6px;
+  --spm-radius-pill: 20px;
+  --spm-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.03);
+  --spm-shadow-md: 0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04);
+  --spm-shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+  --spm-transition-fast: 150ms ease;
+  --spm-transition-normal: 200ms ease;
+  --spm-focus-ring: 0 0 0 2px rgb(var(--now-actionable--primary--background-color, 0, 128, 163));
+}
+
+.spm-app {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--spm-font-body);
+  min-height: 100vh;
+  background: rgb(var(--now-color_surface--neutral-2, 241, 243, 243));
+  color: rgb(var(--now-color_text--primary, 16, 23, 26));
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Sticky Header --- */
+.spm-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background: rgb(var(--now-color_surface--neutral-1, 252, 252, 252));
+  border-bottom: 1px solid rgb(var(--now-container--border-color, 207, 213, 215));
+  box-shadow: var(--spm-shadow-sm);
+  min-height: 48px;
+  transition: box-shadow var(--spm-transition-normal);
+}
+
+.spm-header__title-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.spm-header__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--spm-radius-actionable);
+  background: rgba(0, 128, 163, 0.08);
+  color: rgb(var(--now-actionable--primary--background-color, 0, 128, 163));
+  transition: background var(--spm-transition-fast);
+}
+
+.spm-header__icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.spm-header__title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: var(--spm-font-heading);
+  color: rgb(var(--now-color_text--primary, 16, 23, 26));
+  letter-spacing: -0.2px;
+}
+
+.spm-header__subtitle {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgb(var(--now-color_text--tertiary, 55, 68, 74));
+  margin-left: 8px;
+}
+
+.spm-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* --- Main Content Area --- */
+.spm-content {
+  padding: 20px 24px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* --- Error State --- */
+.spm-error {
+  padding: 12px 16px;
+  border-radius: var(--spm-radius-container);
+  background: rgba(228, 35, 56, 0.04);
+  color: rgb(var(--now-actionable--primary-negative--background-color, 228, 35, 56));
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid rgba(228, 35, 56, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: slideIn var(--spm-transition-normal);
+}
+
+/* --- Loading State --- */
+.spm-loading {
+  padding: 48px 32px;
+  text-align: center;
+  color: rgb(var(--now-color_text--secondary, 35, 46, 51));
+  font-size: 14px;
+  font-weight: 500;
+  background: rgb(var(--now-color_surface--neutral-1, 252, 252, 252));
+  border-radius: var(--spm-radius-container);
+  border: 1px solid rgb(var(--now-container--border-color, 207, 213, 215));
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+/* --- Empty State --- */
+.spm-empty {
+  padding: 48px 32px;
+  text-align: center;
+  color: rgb(var(--now-color_text--secondary, 35, 46, 51));
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px dashed rgb(var(--now-container--border-color, 207, 213, 215));
+  border-radius: var(--spm-radius-container);
+  background: rgb(var(--now-color_surface--neutral-1, 252, 252, 252));
+}
+
+/* ============================================================
+   View Toggle — Category Chips (Total / OpEx / CapEx)
+   ============================================================ */
+
+.spm-view-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: rgb(var(--now-color_surface--neutral-1, 252, 252, 252));
+  border: 1px solid rgb(var(--now-container--border-color, 207, 213, 215));
+  border-radius: var(--spm-radius-container);
+  box-shadow: var(--spm-shadow-sm);
+}
+
+.spm-view-toggle__label {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgb(var(--now-color_text--tertiary, 55, 68, 74));
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-right: 4px;
+}
+
+.spm-toggle-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 16px;
+  border-radius: var(--spm-radius-pill);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all var(--spm-transition-fast);
+  outline: none;
+  user-select: none;
+  background: rgb(var(--now-color_surface--neutral-3, 230, 233, 234));
+  color: rgb(var(--now-color_text--secondary, 35, 46, 51));
+}
+
+.spm-toggle-chip:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: var(--spm-shadow-md);
+}
+
+.spm-toggle-chip:focus-visible {
+  box-shadow: var(--spm-focus-ring);
+}
+
+.spm-toggle-chip:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Total chip — Primary */
+.spm-toggle-chip--total.spm-toggle-chip--active {
+  background: rgb(var(--now-actionable--primary--background-color, 0, 128, 163));
+  color: #ffffff;
+  border-color: rgb(var(--now-actionable--primary--background-color, 0, 128, 163));
+}
+
+.spm-toggle-chip--total:not(.spm-toggle-chip--active) {
+  border-color: rgb(var(--now-actionable--primary--background-color, 0, 128, 163));
+  color: rgb(var(--now-actionable--primary--background-color, 0, 128, 163));
+  background: transparent;
+}
+
+/* OpEx chip — Orange */
+.spm-toggle-chip--opex.spm-toggle-chip--active {
+  background: rgb(var(--now-color_grouped--orange-2, 255, 140, 114));
+  color: #ffffff;
+  border-color: rgb(var(--now-color_grouped--orange-2, 255, 140, 114));
+}
+
+.spm-toggle-chip--opex:not(.spm-toggle-chip--active) {
+  border-color: rgb(var(--now-color_grouped--orange-2, 255, 140, 114));
+  color: rgb(var(--now-color_grouped--orange-3, 200, 110, 89));
+  background: transparent;
+}
+
+/* CapEx chip — Green */
+.spm-toggle-chip--capex.spm-toggle-chip--active {
+  background: rgb(var(--now-color_grouped--green-2, 81, 185, 98));
+  color: #ffffff;
+  border-color: rgb(var(--now-color_grouped--green-2, 81, 185, 98));
+}
+
+.spm-toggle-chip--capex:not(.spm-toggle-chip--active) {
+  border-color: rgb(var(--now-color_grouped--green-2, 81, 185, 98));
+  color: rgb(var(--now-color_grouped--green-3, 63, 145, 77));
+  background: transparent;
+}
+
+/* --- Animations --- */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

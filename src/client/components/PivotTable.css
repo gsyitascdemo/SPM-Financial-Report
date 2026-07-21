@@ -1,0 +1,215 @@
+/* ============================================================
+   SPM Financial Pivot Report — Pivot Table
+   Horizon Design System — Data table with proper elevation & tokens
+   ============================================================ */
+
+.pivot-wrapper {
+  border: 1px solid rgb(var(--now-container--border-color, 207, 213, 215));
+  border-radius: var(--spm-radius-container, 4px);
+  overflow: hidden;
+  background: rgb(var(--now-color_surface--neutral-1, 252, 252, 252));
+  box-shadow: var(--spm-shadow-md, 0 2px 8px rgba(0, 0, 0, 0.06));
+}
+
+.pivot-scroll {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.pivot-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+/* --- Header & Data Cells base --- */
+.pivot-table th,
+.pivot-table td {
+  padding: 10px 14px;
+  text-align: right;
+  border-bottom: 1px solid rgb(var(--now-color_surface--neutral-3, 230, 233, 234));
+}
+
+/* --- Sticky First Column --- */
+.pivot-sticky-col {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background: rgb(var(--now-color_surface--neutral-1, 252, 252, 252));
+  text-align: left !important;
+  min-width: 220px;
+  border-right: 2px solid rgb(var(--now-color_surface--neutral-4, 220, 224, 226));
+  font-weight: 500;
+  transition: background-color var(--spm-transition-fast, 150ms ease),
+              border-color var(--spm-transition-fast, 150ms ease);
+}
+
+/* --- Corner Cell (Project header) --- */
+.pivot-corner-cell {
+  background: rgb(var(--now-color_surface--neutral-3, 230, 233, 234));
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: rgb(var(--now-color_text--tertiary, 55, 68, 74));
+  vertical-align: middle;
+}
+
+/* ============================================================
+   Category Group Headers (Total / OpEx / CapEx)
+   ============================================================ */
+
+.pivot-category-header {
+  text-align: center !important;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 10px 14px;
+  border-left: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Total — Primary */
+.pivot-category-header--total {
+  background: rgb(var(--now-actionable--primary--background-color, 0, 128, 163));
+  color: #ffffff;
+}
+
+/* OpEx — Orange */
+.pivot-category-header--opex {
+  background: rgb(var(--now-color_grouped--orange-2, 255, 140, 114));
+  color: #ffffff;
+}
+
+/* CapEx — Green */
+.pivot-category-header--capex {
+  background: rgb(var(--now-color_grouped--green-2, 81, 185, 98));
+  color: #ffffff;
+}
+
+/* --- Metric Sub-Header --- */
+.pivot-metric-header {
+  background: rgb(var(--now-color_surface--neutral-3, 230, 233, 234));
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: rgb(var(--now-color_text--tertiary, 55, 68, 74));
+  padding: 8px 14px;
+}
+
+.pivot-sub-header {
+  background: rgb(var(--now-color_surface--neutral-3, 230, 233, 234));
+}
+
+/* --- Project Name Column --- */
+.pivot-project-name {
+  font-weight: 600;
+  color: rgb(var(--now-color_text--primary, 16, 23, 26));
+  letter-spacing: -0.1px;
+}
+
+/* --- Expand/Collapse Icon --- */
+.pivot-expand-icon {
+  cursor: pointer;
+  margin-right: 10px;
+  font-size: 10px;
+  color: rgb(var(--now-color_text--tertiary, 55, 68, 74));
+  transition: color var(--spm-transition-fast, 150ms ease),
+              transform var(--spm-transition-fast, 150ms ease);
+  display: inline-block;
+}
+
+.pivot-expand-icon:hover {
+  color: rgb(var(--now-actionable--primary--background-color, 0, 128, 163));
+  transform: scale(1.2);
+}
+
+.pivot-expand-icon:focus-visible {
+  outline: 2px solid rgb(var(--now-actionable--primary--background-color, 0, 128, 163));
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* --- Data Rows --- */
+.pivot-row {
+  transition: background-color var(--spm-transition-fast, 150ms ease);
+}
+
+.pivot-row:nth-child(even) td {
+  background: rgb(var(--now-color_surface--neutral-2, 241, 243, 243));
+}
+
+.pivot-row:nth-child(even) .pivot-sticky-col {
+  background: rgb(var(--now-color_surface--neutral-2, 241, 243, 243));
+}
+
+.pivot-row:hover td {
+  background: rgba(0, 128, 163, 0.04);
+}
+
+.pivot-row:hover .pivot-sticky-col {
+  background: rgba(0, 128, 163, 0.06);
+  border-right-color: rgb(var(--now-actionable--primary--background-color, 0, 128, 163));
+}
+
+.pivot-row.expanded td {
+  background: rgba(0, 128, 163, 0.05);
+}
+
+.pivot-row.expanded .pivot-sticky-col {
+  background: rgba(0, 128, 163, 0.07);
+  border-right-color: rgb(var(--now-actionable--primary--background-color, 0, 128, 163));
+}
+
+/* --- Data Cells --- */
+.pivot-cell {
+  font-variant-numeric: tabular-nums;
+  font-size: 13px;
+  color: rgb(var(--now-color_text--primary, 16, 23, 26));
+}
+
+/* --- Forecast conditional coloring (compared to Budget) --- */
+.forecast-over-budget {
+  color: rgb(var(--now-actionable--primary-negative--background-color, 228, 35, 56));
+  font-weight: 700;
+}
+
+.forecast-under-budget {
+  color: rgb(var(--now-color_alert--high-2, 196, 115, 0));
+  font-weight: 700;
+}
+
+/* --- Totals Row --- */
+.pivot-totals-row td {
+  font-weight: 800;
+  background: rgb(var(--now-color_surface--neutral-3, 230, 233, 234));
+  border-top: 2px solid rgb(var(--now-color_surface--neutral-5, 209, 214, 217));
+  border-bottom: none;
+  font-size: 13px;
+  color: rgb(var(--now-color_text--primary, 16, 23, 26));
+}
+
+.pivot-totals-label {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 12px;
+  background: rgb(var(--now-color_surface--neutral-3, 230, 233, 234)) !important;
+}
+
+.pivot-total {
+  background: rgb(var(--now-color_surface--neutral-3, 230, 233, 234)) !important;
+}
+
+/* --- Drill-Down Expanded Row --- */
+.pivot-drilldown-row td {
+  padding: 0;
+  border-bottom: 2px solid rgb(var(--now-color_surface--neutral-4, 220, 224, 226));
+}
+
+.pivot-drilldown-cell {
+  background: rgb(var(--now-color_surface--neutral-2, 241, 243, 243)) !important;
+}
